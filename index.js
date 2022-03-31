@@ -2,7 +2,7 @@ const container = document.querySelector("#student-container");
 const studentEl = document.querySelector('#student');
 const pick = document.querySelector('button');
 
-const students = [
+let students = [
     'Emon',
     'Alana',
     'Amber',
@@ -26,14 +26,18 @@ const students = [
 
 const pickedStudents = [];
 let currentStudent = '';
-const randomNumber = () => Math.floor(Math.random() * students.length);
 pick.addEventListener('click', (e) => {
     e.preventDefault();
-    pickedStudents.push(currentStudent);
-    let random = randomNumber();
-    currentStudent = students[random];
-    studentEl.innerHTML = currentStudent;
-    render();
+    if (students.length > 0){
+        pickedStudents.push(currentStudent);
+        render(); 
+        const randomNumber = Math.floor(Math.random() * students.length);
+        currentStudent = students[randomNumber];
+        students = students.filter(s => s !== currentStudent);
+        studentEl.innerHTML = currentStudent;
+    } else {
+        studentEl.innerHTML = 'All Students Have Gone!'
+    }
 });
 
 function render() {
