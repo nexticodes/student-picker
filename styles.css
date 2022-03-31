@@ -5,3 +5,20 @@ body {
     align-items: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+#student-container { 
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+#title {
+    margin-top: 30vh;
+}
+
+#student {
+    height: 72px;
+    font-size: 72px;
+}
