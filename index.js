@@ -28,15 +28,19 @@ const pickedStudents = [];
 let currentStudent = '';
 pick.addEventListener('click', (e) => {
     e.preventDefault();
-    if (students.length > 0){
+    if (students.length > 1){
         pickedStudents.push(currentStudent);
         render(); 
+        students = students.filter(s => s !== currentStudent);
         const randomNumber = Math.floor(Math.random() * students.length);
         currentStudent = students[randomNumber];
-        students = students.filter(s => s !== currentStudent);
         studentEl.innerHTML = currentStudent;
     } else {
+        pickedStudents.push(currentStudent);
+        render();
         studentEl.innerHTML = 'All Students Have Gone!'
+        pick.innerHTML = 'RESET'
+        pick.setAttribute('onClick', 'window.location.reload()')
     }
 });
 
